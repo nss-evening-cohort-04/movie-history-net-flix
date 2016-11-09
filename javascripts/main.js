@@ -1,1 +1,2 @@
-alert('shit');
+"use strict";
+

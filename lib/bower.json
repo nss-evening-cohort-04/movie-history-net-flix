@@ -1,0 +1,20 @@
+{
+  "name": "lib",
+  "description": "api-ww",
+  "main": "index.js",
+  "authors": [
+    "Netflix Team"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1"
+  }
+}

@@ -5,7 +5,7 @@ let uid = "";
 
 function movieToDOM () {
   NFAPI.getMovie(apiKeys, uid).then(function(movies){
-    console.log("api preloaded movies", items)
+    console.log("api preloaded movies", items);
   });
 }
 
@@ -32,7 +32,6 @@ $('#registerButton').on('click', function(){
  NFAPI.registerUser(user).then(function(registerResponse){
    console.log("register response", registerResponse);
    let newUser = {
-     "username": username,
      "uid": registerResponse.uid
    };
    return NFAPI.addUser(apiKeys, newUser);
@@ -60,23 +59,23 @@ $('#loginButton').on("click", function(){
  };
  NFAPI.loginUser(user).then(function(loginResponse){
    uid = loginResponse.uid;
-   createLogoutButton();
-   putTodoInDOM();
+   // createLogoutButton();
+   // putTodoInDOM();
    $('#login-container').addClass("hide");
    $('#movie-container').removeClass("hide");
  });
 });
 
-$('#logout-container').on("click", "#logoutButton", function(){
- NFAPI.logoutUser();
- uid = "";
- $('#incomplete-tasks').html("");
- $('#completed-tasks').html("");
- $('#inputEmail').val("");
- $('#inputPassword').val("");
- $('#inputUsername').val("");
- $('#login-container').removeClass("hide");
- $('#todo-container').addClass("hide");
-});
+// $('#logout-container').on("click", "#logoutButton", function(){
+//  NFAPI.logoutUser();
+//  uid = "";
+//  $('#incomplete-tasks').html("");
+//  $('#completed-tasks').html("");
+//  $('#inputEmail').val("");
+//  $('#inputPassword').val("");
+//  $('#inputUsername').val("");
+//  $('#login-container').removeClass("hide");
+//  $('#todo-container').addClass("hide");
+// });
 
 });

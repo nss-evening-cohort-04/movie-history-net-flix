@@ -1,6 +1,6 @@
 // "use strict";
 
-// var FbAPI = (function(oldFirebase){
+// var NFAPI = (function(oldFirebase){
 //   oldFirebase.getUser = function(apiKeys, uid){
 //     return new Promise((resolve, reject)=>{
 //     $.ajax({
@@ -40,4 +40,4 @@
 
 //   return oldFirebase;
 
-// })(FbAPI || {})
+// })(NFAPI || {})

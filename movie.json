@@ -1,4 +1,4 @@
-{	
+{
 	"items": {
 		"item0": {
 			"title": "Dani",
@@ -7,7 +7,7 @@
 			"majorActors": "['Gary Busey', 'Gary Busey' 'Gary Busey']",
 			"rating": "4",
 			"hasWatched": true,
-			"uid": ""
+			"uid": "qwuc5aLto6TCGX8PkokzctiWfPJ2"
 		},
 		"item1": {
 			"title": "Thomas",
@@ -15,8 +15,8 @@
 			"year": "2016",
 			"majorActors": "['Gary Busey', 'Gary Busey' 'Gary Busey']",
 			"rating": "3",
-			"hasWatched": true,
-			"uid": ""
+			"hasWatched": false,
+			"uid": "qwuc5aLto6TCGX8PkokzctiWfPJ2"
 		},
 		"item2": {
 			"title": "Lee",

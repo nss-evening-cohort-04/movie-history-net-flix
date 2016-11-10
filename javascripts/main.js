@@ -42,7 +42,6 @@ $('#registerButton').on('click', function(){
  }).then(function(loginResponse){
    console.log("login response", loginResponse);
    uid = loginResponse.uid;
-   // createLogoutButton();
    // putTodoInDOM();
    $('#login-container').addClass("hide");
    $('#movie-container').removeClass("hide");
@@ -59,23 +58,16 @@ $('#loginButton').on("click", function(){
  };
  NFAPI.loginUser(user).then(function(loginResponse){
    uid = loginResponse.uid;
-   // createLogoutButton();
    // putTodoInDOM();
    $('#login-container').addClass("hide");
    $('#movie-container').removeClass("hide");
  });
 });
 
-// $('#logout-container').on("click", "#logoutButton", function(){
-//  NFAPI.logoutUser();
-//  uid = "";
-//  $('#incomplete-tasks').html("");
-//  $('#completed-tasks').html("");
-//  $('#inputEmail').val("");
-//  $('#inputPassword').val("");
-//  $('#inputUsername').val("");
-//  $('#login-container').removeClass("hide");
-//  $('#todo-container').addClass("hide");
-// });
+$('#searchButton').on("click",function(items){
+ NFAPI.getMovie(apiKeys, uid);
+ console.log("movies", items);
+
+});
 
 });

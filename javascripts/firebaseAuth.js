@@ -1,6 +1,6 @@
 'use strict';
 
-var FbAPI = (function(oldFirebase){
+var NFAPI = (function(oldFirebase){
 
   oldFirebase.registerUser = function(credentials){
     return new Promise((resolve, reject) => {
@@ -37,4 +37,4 @@ var FbAPI = (function(oldFirebase){
 
 return oldFirebase;
 
-})(FbAPI || {});
+})(NFAPI || {});

@@ -27,7 +27,7 @@ $('#registerButton').on('click', function(){
    "email": email,
    "password": password
  };
- console.log("fuck this")
+ console.log("")
 
  NFAPI.registerUser(user).then(function(registerResponse){
    console.log("register response", registerResponse);
@@ -67,16 +67,16 @@ $('#loginButton').on("click", function(){
  });
 });
 
-// $('#logout-container').on("click", "#logoutButton", function(){
-//  NFAPI.logoutUser();
-//  uid = "";
-//  $('#incomplete-tasks').html("");
-//  $('#completed-tasks').html("");
-//  $('#inputEmail').val("");
-//  $('#inputPassword').val("");
-//  $('#inputUsername').val("");
-//  $('#login-container').removeClass("hide");
-//  $('#todo-container').addClass("hide");
-// });
+$('#logout-container').on("click", "#logoutButton", function(){
+ NFAPI.logoutUser();
+ uid = "";
+ $('#incomplete-tasks').html("");
+ $('#completed-tasks').html("");
+ $('#inputEmail').val("");
+ $('#inputPassword').val("");
+ $('#inputUsername').val("");
+ $('#login-container').removeClass("hide");
+ $('#todo-container').addClass("hide");
+});
 
 });

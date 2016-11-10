@@ -2,7 +2,7 @@
 
 var NFAPI = (function(oldFirebase){
 
-oldFirebase.getTodos = function(apiKeys, uid){
+oldFirebase.getMovie = function(apiKeys, uid){
   return new Promise((resolve, reject)=>{
     $.ajax({
       method: 'GET',

@@ -16,4 +16,5 @@ var NFAPI = (function(){
     });
   }
  };
+
 })();

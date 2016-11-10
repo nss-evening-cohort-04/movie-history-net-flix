@@ -1,6 +1,6 @@
 'use strict';
 
-var NFAPI = (function(oldFirebase){
+var FbAPI = (function(oldFirebase){
 
   oldFirebase.registerUser = function(credentials){
     return new Promise((resolve, reject) => {
@@ -26,15 +26,15 @@ var NFAPI = (function(oldFirebase){
     });
   };
 
-  oldFirebase.credentialsCurrentUser = function(email, password){
+  oldFirebase.credentialsCurrentUser = function(){
     return firebase.auth().currentUser;
   };
 
-  oldFirebase.logoutUser = function(email, password){
+  oldFirebase.logoutUser = function(){
      firebase.auth().signOut();
   };
 
 
 return oldFirebase;
 
-})(NFAPI || {});
+})(FbAPI || {});

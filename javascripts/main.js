@@ -5,7 +5,7 @@ let uid = "";
 
 function movieToDOM () {
   NFAPI.getMovie(apiKeys, uid).then(function(movies){
-    console.log("api preloaded movies", items);
+    console.log("api preloaded movies", movies);
   });
 }
 
@@ -27,7 +27,7 @@ $('#registerButton').on('click', function(){
    "email": email,
    "password": password
  };
- console.log("")
+ console.log("");
 
  NFAPI.registerUser(user).then(function(registerResponse){
    console.log("register response", registerResponse);
@@ -42,8 +42,8 @@ $('#registerButton').on('click', function(){
  }).then(function(loginResponse){
    console.log("login response", loginResponse);
    uid = loginResponse.uid;
-   createLogoutButton();
-   putTodoInDOM();
+   // createLogoutButton();
+   // putTodoInDOM();
    $('#login-container').addClass("hide");
    $('#movie-container').removeClass("hide");
  });

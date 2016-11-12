@@ -20,51 +20,51 @@ $(document).ready(function(){
 
 
 
-$('#registerButton').on('click', function(){
- let email = $('#inputEmail').val();
- let password = $('#inputPassword').val();
- let user = {
-   "email": email,
-   "password": password
- };
-
- NFAPI.registerUser(user).then(function(registerResponse){
-   console.log("register response", registerResponse);
-   let newUser = {
-     "uid": registerResponse.uid
+ $('#registerButton').on('click', function(){
+   let email = $('#inputEmail').val();
+   let password = $('#inputPassword').val();
+   let user = {
+     "email": email,
+     "password": password
    };
-   return NFAPI.addUser(apiKeys, newUser);
 
- }).then(function(addUserResponse){
+   NFAPI.registerUser(user).then(function(registerResponse){
+     console.log("register response", registerResponse);
+     let newUser = {
+       "uid": registerResponse.uid
+     };
+     return NFAPI.addUser(apiKeys, newUser);
 
-   return NFAPI.loginUser(user);
- }).then(function(loginResponse){
-   console.log("login response", loginResponse);
-   uid = loginResponse.uid;
+   }).then(function(addUserResponse){
+
+     return NFAPI.loginUser(user);
+   }).then(function(loginResponse){
+     console.log("login response", loginResponse);
+     uid = loginResponse.uid;
    // putTodoInDOM();
    $('#login-container').addClass("hide");
    $('#movie-container').removeClass("hide");
  });
-});
+ });
 
-$('#loginButton').on("click", function(){
- let email = $('#inputEmail').val();
- let password = $('#inputPassword').val();
+ $('#loginButton').on("click", function(){
+   let email = $('#inputEmail').val();
+   let password = $('#inputPassword').val();
 
- let user = {
-   "email": email,
-   "password": password
- };
- NFAPI.loginUser(user).then(function(loginResponse){
-   uid = loginResponse.uid;
+   let user = {
+     "email": email,
+     "password": password
+   };
+   NFAPI.loginUser(user).then(function(loginResponse){
+     uid = loginResponse.uid;
    // putTodoInDOM();
    $('#login-container').addClass("hide");
    $('#movie-container').removeClass("hide");
  });
-});
+ });
 
 
-let movieList = (searchText) => {
+ let movieList = (searchText) => {
   return new Promise ((resolve,reject) => {
     $.ajax({
       method: 'GET',
@@ -98,13 +98,35 @@ $('#searchButton').on("click",function(items){
   movieList(movieSearched).then((dataFromApi)=>{
     $('searchButton').button("reset");
     console.log("data",dataFromApi);
-    $('#search-results').append(`<img src="${dataFromApi.Poster}">`);
-    $('#search-results').append(`<div> ${dataFromApi.Title} </div>`);
-    $('#search-results').append(`<div> ${dataFromApi.Year} </div>`);
-    $('#search-results').append(`<div> ${dataFromApi.Actors} </div>`);
-    $('#search-results').append(`<div> ${dataFromApi.imdbRating} </div>`);
+    let searched = $('#search-results').append(
+      `<img src="${dataFromApi.Poster}">
+      <h2> ${dataFromApi.Title} </h2>
+      <h5> ${dataFromApi.Year} </h5>
+      <h5> ${dataFromApi.Actors} </h5>
+      <p> ${dataFromApi.imdbRating} </p>
+      <button class="btn btn-primary addToWishlist">Add to Wishlist</button>
+      `);
+  });
+  $(".addToWishlist").on("click", function(wishedMovies, items){
+    console.log("test click");
+    let movieSearched = $("#OMDBsearch").val();
+    console.log("movieSearched", items);
+    movieList(movieSearched).then((dataFromApi)=>{
+    // $('searchButton').button("reset");
+    let wished = $('#wishlist').append(
+      `<img src="${dataFromApi.Poster}">
+      <h2> ${dataFromApi.Title} </h2>
+      <h5> ${dataFromApi.Year} </h5>
+      <h5> ${dataFromApi.Actors} </h5>
+      <p> ${dataFromApi.imdbRating} </p>
+      <button class="btn btn-primary removeFromnList">remove</button>
+      `);
+  });
   });
 });
+
+
+
 
 
 

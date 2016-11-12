@@ -63,12 +63,6 @@ $('#loginButton').on("click", function(){
  });
 });
 
-$('#searchButton').on("click",function(items){
-movieList();
- // ("#search-results").html("");
-  let movieSearched = $("#OMDBsearch").val();
-  console.log("movieSearched", items);
-});
 
 let movieList = (searchText) => {
   return new Promise ((resolve,reject) => {
@@ -81,7 +75,7 @@ let movieList = (searchText) => {
 
       $.ajax({
         method: 'GET',
-        url: `http://www.omdbapi.com/?t="${searchText}"&y=&plot=short&r=json` 
+        url: `http://www.omdbapi.com/?t="${searchText}"&y=&plot=short&r=json`
       }).then((response2) => {
         console.log("movie response: ", response2);
         resolve(response2);
@@ -97,5 +91,21 @@ let movieList = (searchText) => {
     });
   });
 };
+
+$('#searchButton').on("click",function(items){
+  let movieSearched = $("#OMDBsearch").val();
+  console.log("movieSearched", items);
+  movieList(movieSearched).then((dataFromApi)=>{
+    $('searchButton').button("reset");
+    console.log("data",dataFromApi);
+    $('#search-results').append(`<img src="${dataFromApi.Poster}">`);
+    $('#search-results').append(`<div> ${dataFromApi.Title} </div>`);
+    $('#search-results').append(`<div> ${dataFromApi.Year} </div>`);
+    $('#search-results').append(`<div> ${dataFromApi.Actors} </div>`);
+    $('#search-results').append(`<div> ${dataFromApi.imdbRating} </div>`);
+  });
+});
+
+
 
 });

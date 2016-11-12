@@ -1,0 +1,17 @@
+{
+  "name": "movie-history-net-flix",
+  "homepage": "https://github.com/nss-evening-cohort-04/movie-history-net-flix",
+  "authors": [
+    "Tommy Waters <Thomas.Waters05@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

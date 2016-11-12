@@ -27,7 +27,6 @@ $('#registerButton').on('click', function(){
    "email": email,
    "password": password
  };
- console.log("");
 
  NFAPI.registerUser(user).then(function(registerResponse){
    console.log("register response", registerResponse);
@@ -65,9 +64,38 @@ $('#loginButton').on("click", function(){
 });
 
 $('#searchButton').on("click",function(items){
- NFAPI.getMovie(apiKeys, uid);
- console.log("movies", items);
-
+movieList();
+ // ("#search-results").html("");
+  let movieSearched = $("#OMDBsearch").val();
+  console.log("movieSearched", items);
 });
+
+let movieList = (searchText) => {
+  return new Promise ((resolve,reject) => {
+    $.ajax({
+      method: 'GET',
+      url: '../apiKeys.json'
+    }).then((response) => {
+      console.log("API response: ", response);
+      apiKeys = response;
+
+      $.ajax({
+        method: 'GET',
+        url: `http://www.omdbapi.com/?t="${searchText}"&y=&plot=short&r=json` 
+      }).then((response2) => {
+        console.log("movie response: ", response2);
+        resolve(response2);
+      }, (errorResponse2) => {
+        console.log("movie fail: ", errorResponse2);
+        reject(errorResponse2);
+      });
+
+
+    }, (errorResponse) => {
+      console.log("errorResponse:", errorResponse); // these 2 lines are an error message if the 'then' statement fails
+      reject(errorResponse);
+    });
+  });
+};
 
 });

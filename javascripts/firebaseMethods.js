@@ -2,33 +2,34 @@
 
 var NFAPI = (function(oldFirebase){
 
-oldFirebase.getMovie = function(apiKeys, uid){
-  return new Promise((resolve, reject)=>{
-    $.ajax({
-      method: 'GET',
-      url: `${apiKeys.databaseURL}/items.json?orderBy="uid"&equalTo="${uid}"`
-    }).then((response)=>{
-      let items = [];
-        Object.keys(response).forEach(function(key){
-          response[key].id = key; //related to task and isCompleted
-          items.push(response[key]); //this will push an object with all the object info
-        });
-      resolve(items);
-    },(error) =>{
-      console.log(error);
-      reject(error);
-    });
-  });
-};
+// oldFirebase.getMovie = function(moviez){
+//   return new Promise((resolve, reject)=>{
+//     $.ajax({
+//       method: 'GET',
+//       url: `http://www.omdbapi.com/?t="${moviez}"&y=&plot=short&r=json`
+//     }).then((response)=>{
+//       console.log("response from get", response);
+
+//       let items = {};
+//         Object.keys(response).forEach(function(key){
+//           response[key].id = key; //related to task and isCompleted
+//           items.push(response[key]); //this will push an object with all the object info
+//         });
+//       resolve(items);
+//     },(error) =>{
+//       console.log(error);
+//       reject(error);
+//     });
+//   });
+// };
 
 
-
-// oldFirebase.addMovie = function(apiKeys, newItem){
+// oldFirebase.addMovie = function(searched){
 //   return new Promise((resolve, reject)=>{
 //     $.ajax({
 //       method: 'POST',
-//       url: `${apiKeys.databaseURL}/items.json`,
-//       data: JSON.stringify(newItem), //this makes sure that whatever is coming back is valid json
+//       url: `http://www.omdbapi.com/?t=${searched}&y=&plot=short&r=json`,
+//       data: JSON.stringify(), //this makes sure that whatever is coming back is valid json
 //       dataType: 'json'
 //     }).then((response)=>{
 //       console.log("response from POST", response);
